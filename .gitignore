@@ -3,6 +3,22 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# VS Code editor settings
+.vscode/
+
+# MLOps Tool Folders (DVC, MLflow)
+.dvc/cache
+.dvc/tmp
+.dvc/plots
+mlruns/
+
+# Data and Model artifacts (tracked by DVC, not Git)
+data/
+models/
+
+# Report outputs (like from Evidently)
+*.html
+
 # C extensions
 *.so
 

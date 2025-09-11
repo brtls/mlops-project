@@ -7,8 +7,9 @@ class Cleaner:
         
         
     def clean_data(self, data):
+
         data.drop(['id','SalesChannelID','VehicleAge','DaysSinceCreated'], axis=1, inplace=True)
-        
+        data.dropna(subset=['Result'], inplace=True)
         data['AnnualPremium'] = data['AnnualPremium'].str.replace('£', '').str.replace(',', '').astype(float)
             
         for col in ['Gender', 'RegionID']:
