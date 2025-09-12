@@ -15,7 +15,7 @@ def sample_data():
         'RegionID': [np.nan, 2, 3, np.nan],
         'Age': [30, np.nan, 25, 40],
         'HasDrivingLicense': [1, np.nan, 1, np.nan],
-        'Switch': [0, 1, np.nan, 0],
+        'Switch': [np.nan, 1, 1, 0],
         'PastAccident': [np.nan, 'Yes', 'No', 'Yes'],
         'Result': [0, 1, np.nan, 0]
     })
