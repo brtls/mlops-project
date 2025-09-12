@@ -13,8 +13,8 @@ __pycache__/
 mlruns/
 
 # Data and Model artifacts (tracked by DVC, not Git)
-data/
-models/
+# data/
+# models/
 
 # Report outputs (like from Evidently)
 *.html
