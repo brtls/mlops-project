@@ -16,7 +16,8 @@ def sample_data():
         'Age': [30, np.nan, 25, 40],
         'HasDrivingLicense': [1, np.nan, 1, np.nan],
         'Switch': [0, 1, np.nan, 0],
-        'PastAccident': [np.nan, 'Yes', 'No', 'Yes']
+        'PastAccident': [np.nan, 'Yes', 'No', 'Yes'],
+        'Result': [0, 1, np.nan, 0]
     })
 
 @pytest.fixture
@@ -24,9 +25,11 @@ def cleaner():
     return Cleaner()
 
 def test_clean_data(cleaner, sample_data):
+    initial_rows = len(sample_data)
     cleaned_data = cleaner.clean_data(sample_data.copy())
 
     # Check if the columns are dropped
+    assert len(cleaned_data) == initial_rows - 1
     assert 'id' not in cleaned_data.columns
     assert 'SalesChannelID' not in cleaned_data.columns
     assert 'VehicleAge' not in cleaned_data.columns
