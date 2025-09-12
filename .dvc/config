@@ -1,4 +1,7 @@
 [core]
-    remote = myremote
+    remote = gdrive
 ['remote "myremote"']
     url = E:\datasets\insurance-dataset
+['remote "gdrive"']
+    url = gdrive://1QfcoRXE3Woyb4xevghpV260uGUB_PtAS
+    gdrive_service_account_json_file_path = C:\Users\malte\Desktop\secrets\dvc-gdrive-creds.json

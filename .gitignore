@@ -16,6 +16,10 @@ mlruns/
 # data/
 # models/
 
+# Airflow generated files
+logs/
+.env
+
 # Report outputs (like from Evidently)
 *.html
 
