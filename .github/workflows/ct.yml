@@ -1,0 +1,42 @@
+name: Continuous Training (Simplified)
+
+on:
+  schedule:
+    # Runs at 2 AM UTC on the first day of every month
+    - cron: '0 2 1 * *'
+  workflow_dispatch:
+    # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.13'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run training pipeline
+      # This script uses the data from the repo and saves a new model to the models/ folder
+      run: |
+        python main.py
+
+    - name: Commit and push new model
+      run: |
+        # Configure git for the Action
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+        
+        # Add the potentially updated model file and commit it
+        git add models/
+        git commit -m "chore(model): retrain and update model" || echo "No changes to commit"
+        
+        # Push the changes back to the repository
+        git push
